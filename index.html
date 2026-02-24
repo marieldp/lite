@@ -635,93 +635,56 @@ Valet Parking Available
 
 
 
-<section id="dress-code" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #043927; padding: 60px 20px;">
+<section id="dress-code" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; background-color: #043927; padding: 60px 20px;">
     
-    <style>
-        .attire-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 10px; 
-            /* Pushes images safely away from the top text to prevent clipping */
-            margin-top: 40px; 
-            margin-bottom: 50px;
-        }
-        .attire-gallery div {
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Centers images inside the box safely */
-            height: 160px;
-        }
-        .attire-gallery img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .color-palette-row {
-            display: flex;
-            flex-wrap: nowrap; /* FORCES them to stay on exactly one line */
-            justify-content: center;
-            gap: 25px;
-        }
-        @media (max-width: 600px) {
-            .attire-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px 10px;
-            }
-            .color-palette-row {
-                gap: 10px; /* Shrinks the gap on phones so they don't get squished */
-            }
-        }
-    </style>
+    <div class="reveal-on-scroll" style="width: 100%; max-width: 600px; background: #ffffff; padding: 70px 30px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5); border-radius: 4px; text-align: center;">
 
-    <div class="reveal-on-scroll" style="width: 100%; max-width: 750px; background: #ffffff; padding: 60px 20px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5); border-radius: 4px; text-align: center;">
+        <h2 style="font-family: 'Pinyon Script', cursive; font-size: clamp(45px, 8vw, 65px); color: #043927; margin: 0 0 40px 0; line-height: 1;">Dress Code</h2>
 
-        <h2 style="font-family: 'Pinyon Script', cursive; font-size: clamp(45px, 7vw, 65px); color: #043927; margin: 0; line-height: 1;">Dress Code</h2>
+        <div style="margin-bottom: 60px;">
+            <div style="margin-bottom: 35px;">
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; letter-spacing: 4px; text-transform: uppercase; color: #043927; font-weight: 800; margin: 0 0 10px 0;">
+                    Formal Attire
+                </p>
+                <p style="font-family: 'Georgia', serif; font-size: 15px; color: #666; margin: 0; font-style: italic;">
+                    Standard for all guests
+                </p>
+            </div>
 
-        <div class="attire-gallery">
-            <div><img src="ninong.png" alt="Ninong"></div>
-            <div><img src="ninang.png" alt="Ninang"></div>
-            <div><img src="g.png" alt="Groomsmen"></div>
-            <div><img src="b.png" alt="Bridesmaids"></div>
+            <div style="width: 40px; height: 1px; background: #d4af37; margin: 0 auto 35px auto;"></div>
+
+            <div style="margin-bottom: 20px;">
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; letter-spacing: 4px; text-transform: uppercase; color: #043927; font-weight: 800; margin: 0 0 10px 0;">
+                    For Entourage
+                </p>
+                <p style="font-family: 'Georgia', serif; font-size: 15px; color: #666; margin: 0; font-style: italic;">
+                    Barong Tagalog & Long Gown
+                </p>
+            </div>
         </div>
 
-        <div style="margin-bottom: 55px; padding: 0 15px;">
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: #043927; font-weight: 800; margin: 0 0 15px 0;">
-                Formal Attire
-            </p>
-            
-            <div style="width: 50px; height: 1.5px; background: #d4af37; margin: 0 auto 15px auto;"></div>
-            
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: #043927; font-weight: 800; margin: 0 0 5px 0;">
-                For Entourage
-            </p>
-            <p style="font-family: 'Georgia', serif; font-size: 15px; color: #4a4a4a; margin: 0; font-style: italic;">
-                Barong Tagalog & Long Gown
-            </p>
-        </div>
+        <div style="border-top: 1px solid #f0f0f0; padding-top: 45px;">
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: #043927; font-weight: 900; margin-bottom: 30px;">Our Celebration Colors</p>
 
-        <div style="border-top: 1px solid #eee; padding-top: 35px;">
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: #043927; font-weight: 900; margin-bottom: 25px;">Our Celebration Colors</p>
-
-            <div class="color-palette-row">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <div style="width: 45px; height: 45px; background: #043927; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                    <span style="font-size: 10px; font-family: 'Montserrat', sans-serif; color: #043927; font-weight: 700; letter-spacing: 1px;">EMERALD</span>
+            <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 20px;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background: #043927; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+                    <span style="font-size: 9px; font-family: 'Montserrat', sans-serif; color: #043927; font-weight: 700; letter-spacing: 1px;">EMERALD</span>
                 </div>
                 
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <div style="width: 45px; height: 45px; background: #F4CFE0; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                    <span style="font-size: 10px; font-family: 'Montserrat', sans-serif; color: #F4CFE0; font-weight: 700; letter-spacing: 1px;">ROSE</span>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background: #F4CFE0; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+                    <span style="font-size: 9px; font-family: 'Montserrat', sans-serif; color: #999; font-weight: 700; letter-spacing: 1px;">ROSE</span>
                 </div>
                 
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <div style="width: 45px; height: 45px; background: #d4af37; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                    <span style="font-size: 10px; font-family: 'Montserrat', sans-serif; color: #888; font-weight: 700; letter-spacing: 1px;">GOLD</span>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background: #d4af37; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+                    <span style="font-size: 9px; font-family: 'Montserrat', sans-serif; color: #999; font-weight: 700; letter-spacing: 1px;">GOLD</span>
                 </div>
                 
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <div style="width: 45px; height: 45px; background: #f5f2e8; border: 1px solid #eee; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                    <span style="font-size: 10px; font-family: 'Montserrat', sans-serif; color: #888; font-weight: 700; letter-spacing: 1px;">ECRU</span>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background: #f5f2e8; border: 1px solid #eee; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+                    <span style="font-size: 9px; font-family: 'Montserrat', sans-serif; color: #999; font-weight: 700; letter-spacing: 1px;">ECRU</span>
                 </div>
             </div>
         </div>
