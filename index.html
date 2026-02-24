@@ -13,23 +13,23 @@
 <style>
 .envelope-glow {
     position: absolute;
-    top: 50%;
+    top: 40%; /* Positioned where the opening begins */
     left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%) scale(0.5);
-    background: radial-gradient(circle, #fff 0%, rgba(255,253,230,0.9) 40%, transparent 80%);
-    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.9);
-    z-index: 2; /* Sits behind the front pocket */
+    width: 80px;
+    height: 80px;
+    /* Intense radial light */
+    background: radial-gradient(circle, #fff 0%, #fff9e6 30%, rgba(255,255,255,0) 70%);
+    filter: blur(10px);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    pointer-events: none;
-    transition: all 0.6s ease-out;
+    z-index: 2; /* Sits behind the front pocket but in front of the back */
+    transition: transform 0.7s ease-out, opacity 0.4s ease-out;
 }
 
-/* Light expands and shows up when .open is added */
+/* When the seal is clicked, the light bursts out */
 .open .envelope-glow {
+    transform: translate(-50%, -50%) scale(12); /* Massive expansion */
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.6);
 }
 @media screen and (max-width: 600px) {
     #envelope-label {
@@ -1394,24 +1394,23 @@ const token = urlParams.get('id');
 
 
 function openInvitation() {
-    // 1. Force stop the bobbing animation
+    const wrapper = document.getElementById('envelope-wrapper');
     const flap = document.querySelector('.flap-container');
+
+    // 1. Stop bobbing and trigger 'open' (Flap lifts + Light bursts)
     if (flap) {
         flap.style.animation = 'none';
         void flap.offsetWidth; 
     }
-
-    // 2. Open the flap
-    const wrapper = document.getElementById('envelope-wrapper');
     wrapper.classList.add('open');
     document.getElementById('seal').style.pointerEvents = "none";
 
-    // 3. TRIGGER WRAPPER EXIT (After 0.6s to let the flap start moving)
+    // 2. TRIGGER ENVELOPE EXIT
+    // 600ms allows the flap to lift and the light to peak before the exit
     setTimeout(() => {
         wrapper.classList.add('wrapper-exit');
         
-        // 4. Reveal the site and unlock scrolling
-        document.getElementById('main-site').style.display = 'block';
+        // Unlock site
         document.body.classList.add('show-site');
         document.documentElement.classList.add('show-site'); 
         
