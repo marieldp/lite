@@ -381,8 +381,10 @@ transform: translateY(0);
 /* Reduced from -8px to -3px for a barely-there breath */
 transform: translateY(-3px); 
 } 
-}    @keyframes seal-bob { 0%, 100% { transform: translate(-50%, -50%); } 
-50% { transform: translate(-50%, -53%); } /* Very slight nudge */ } }
+}    
+@keyframes seal-bob { 0%, 100% { transform: translate(-50%, -50%); } 
+50% { transform: translate(-50%, -53%); } /* Very slight nudge */ } 
+
 @keyframes elegantPulse {
 0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.4; }
 50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
@@ -492,7 +494,6 @@ margin-top: 0;
     width: 100% !important;
     position: relative !important; /* Anchors it to the page */
     overflow: hidden !important;
-    clip-path: inset(0 0 0 0); /* The Guillotine that traps the image */
     background-color: #f4f1ea; /* Matches envelope fading */
 }
 
@@ -1026,7 +1027,7 @@ Your presence at our wedding is the greatest gift of all. However, should you wi
 </div>
 </section>
 
-
+</div>
 <script>
 // Add this to the very top of your script block
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
