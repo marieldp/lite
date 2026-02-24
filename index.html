@@ -1090,8 +1090,82 @@ window.dispatchEvent(new Event('scroll'));
 
 
 
+function handleMusic(play, event) {
+    if (event) { event.preventDefault(); event.stopPropagation(); }
 
+    const mBtn = document.getElementById('musicBtn');
+    const audio = document.getElementById('bg-music');
 
+    if (mBtn) {
+        mBtn.style.display = 'flex'; 
+        if (play) {
+            if (audio) {
+                audio.currentTime = 4;
+                audio.play().catch(e => console.log("Audio blocked"));
+            }
+            mBtn.classList.add('playing'); 
+        } else {
+            if (audio) audio.pause();
+            mBtn.classList.remove('playing'); 
+        }
+    }
+
+    // Exit Envelope
+    document.getElementById('envelope-wrapper').classList.add('wrapper-exit');
+    
+    setTimeout(() => {
+        document.getElementById('main-site').style.display = 'block';
+        
+        // UNLOCK SCROLLING
+        document.body.classList.add('show-site');
+        document.documentElement.classList.add('show-site'); // The missing key
+        
+        window.scrollTo(0, 0); // Force top
+        
+        if (typeof setupMusicObserver === "function") {
+            setupMusicObserver(); 
+        }
+    }, 300);
+} 
+function toggleMusic() {
+const audio = document.getElementById("bg-music");
+const mBtn = document.getElementById("musicBtn");
+
+if (!audio || !mBtn) return;
+
+if (audio.paused) {
+audio.play();
+mBtn.classList.add('playing');
+} else {
+audio.pause();
+mBtn.classList.remove('playing');
+}
+}
+// The scroll tracker that fades the button in when you scroll past the photo
+function setupMusicObserver() {
+var btn = document.getElementById("musicBtn");
+
+// Using the exact target that worked perfectly for you last time
+var heroSection = document.querySelector('#main-site > section:first-of-type');
+
+if (!btn || !heroSection) return;
+
+var observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (!entry.isIntersecting) {
+// You scrolled past the top photo -> Show the button
+btn.style.opacity = "1";
+btn.style.pointerEvents = "auto";
+} else {
+// You are at the top -> Hide the button so RSVP text is clear
+btn.style.opacity = "0";
+btn.style.pointerEvents = "none";
+}
+});
+}, { threshold: 0.1 }); 
+
+observer.observe(heroSection);
+}
 
 
 </script>
