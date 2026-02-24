@@ -37,120 +37,9 @@
         letter-spacing: 1px;
     }
 
-    .rsvp-card {
-        min-height: 480px; /* Taller baseline for phones so it never has to stretch */
-        padding: 30px 15px; /* Less padding on phones gives the text more room */
-    }
-}
-
-/* This locks the section height to prevent the "jump" */
-#rsvp {
-    min-height: 500px; /* Adjust this number to match your card's height */
-    display: flex;
-    align-items: center; /* Keeps the card centered vertically */
-    justify-content: center;
-}
-
-/* Ensures the container doesn't collapse during the switch */
-#rsvp-form-container, 
-#rsvp-search-container {
-    width: 100%;
-    max-width: 450px; /* Keeps your card width consistent */
-    margin: 0 auto;
-}
-    
-#gifting img {
-width: 100% !important;
-height: 100% !important;
-object-fit: contain !important; /* This keeps the whole QR visible but fits it in the box */
-padding: 10px; /* Gives the QR some breathing room inside the gold frame */
-}
-
-/* =========================================
-   MUSIC BUTTON SECTION STYLES
-   ========================================= */#musicBtn {
-position: fixed !important;
-bottom: 25px !important;
-right: 25px !important;
-z-index: 9999 !important;
-width: 50px !important;
-height: 50px !important;
-border-radius: 50% !important;
-border: 1.5px solid #d4af37 !important;
-cursor: pointer !important;
-display: none; /* JS makes this flex when opening */
-align-items: center !important;
-justify-content: center !important;
-box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-
-/* Fades in on scroll */
-opacity: 0; 
-pointer-events: none;
-transition: opacity 0.5s ease, background-color 0.4s ease !important;
-
-/* Pink Background for Paused */
-background-color: #f4cfe0 !important; 
-}
-
-/* Green Icon for Paused */
-#musicBtn svg path {
-fill: #043927 !important; 
-transition: fill 0.4s ease !important;
-}
-
-/* --- PLAYING STATE (Green Background, Gold Icon) --- */
-#musicBtn.playing {
-background-color: #043927 !important; /* Green Background */
-}
-
-#musicBtn.playing svg path {
-fill: #d4af37 !important; /* Gold Icon */
-}
-
-/* PULSING ANIMATION (Only the Icon) */
-#musicBtn.playing svg {
-animation: icon-pulse 1.2s infinite ease-in-out !important;
-transform-origin: center;
-}
-
-@keyframes icon-pulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.35); }
-100% { transform: scale(1); }
 }
 
 
-/* Your existing scroll container fix */
-#scroll-container {
-bottom: 90px !important; 
-right: 25px !important;
-}
-
-/* =========================================
-   ENTOURAGE SECTION STYLES
-   ========================================= */
-/* Fix for the Entourage names cutting off */
-#entourage p {
-font-size: 16px !important;
-/* Line-height creates the vertical "margin" between stacked names */
-line-height: 1.8 !important; 
-font-weight: 400;
-margin-top: 5px !important;
-margin-bottom: 20px !important; /* Space between the ROLE and the next role */
-padding: 0 15px;
-display: block;
-letter-spacing: 0.5px;
-animation: fadeInName 0.8s ease forwards;
-}
-
-
-/* Optional: Shrink the 'The Entourage' header slightly for mobile */
-#entourage h2 {
-font-size: 42px !important;
-}
-/* =========================================
-   DRESS CODE SECTION STYLES
-   ========================================= */
 
 /* 1. Attire Photos (Desktop: 2 Columns) */
 .attire-grid {
@@ -198,18 +87,9 @@ font-size: 42px !important;
     #landing-hero::before {
         transform: translateZ(0); /* Hardware acceleration to stop flicker */
     }
-
-    /* 2. LOWER THE MUSIC BUTTON */
-#musicBtn {
-        bottom: 85px !important; 
-        right: 20px !important;
-    }
-
-    /* 3. PULL THE LETTER HIGHER OUT OF THE POCKET */
-    .open .letter {
-        transform: translateY(-75%) !important; /* Increased from -60% to clear the taller pocket */
-    }
 }
+
+
 
 
 
@@ -368,70 +248,6 @@ font-style: normal;
     background-size: 100% 100%;
 }
 
-/* --- THE LETTER (Always Inside) AND EVERYTHING INSIDE IT --- */
-.letter {
-    position: absolute; bottom: 0; left: 15%; width: 70%; height: 70%; 
-    background: white; z-index: 2 !important; border: 1px solid var(--gold); 
-    display: flex; flex-direction: column; justify-content: center !important; 
-    align-items: center; text-align: center;
-    padding-top: 20px !important; padding-bottom: 60px !important; 
-    padding-left: 20px; padding-right: 20px; box-sizing: border-box;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
-    transform: translateY(0); opacity: 0; visibility: hidden;
-    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
-}
-
-.letter h2 {
-font-family: 'Allison', cursive !important;
-font-size: 3.2rem !important;
-color: var(--accent);
-font-weight: 400;
-margin-top: 0 !important; /* Keeps it tight */
-margin-bottom: 5px;
-line-height: 1;
-}
-.letter p {
-font-family: 'Montserrat', sans-serif;
-font-size: 0.85rem;
-text-transform: uppercase;
-letter-spacing: 2px;
-color: var(--text);
-margin: 10px 0 20px 0;
-}
-
-/* Buttons inside the Letter */
-.letter button {
-padding: 10px 25px;
-font-family: 'Montserrat', sans-serif;
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-cursor: pointer;
-border: 1px solid var(--accent);
-transition: all 0.3s ease;
-}
-
-/* The "YES" Button Style */
-.letter button.btn-yes {
-background-color: var(--accent);
-color: white;
-}
-.letter button.btn-yes:hover {
-background-color: var(--gold);
-border-color: var(--gold);
-}
-
-/* The "NO" Button Style */
-.letter button.btn-no {
-background-color: transparent;
-color: var(--accent);
-}
-.letter button.btn-no:hover {
-background-color: #fcfaf7;
-color: var(--gold);
-border-color: var(--gold);
-}
-
 /* This makes sure it physically leaves the screen */
 #envelope-wrapper.wrapper-exit {
     opacity: 0 !important;
@@ -514,101 +330,14 @@ transform: translateY(0);
 /* Reduced from -8px to -3px for a barely-there breath */
 transform: translateY(-3px); 
 } 
-}    @keyframes seal-bob { 0%, 100% { transform: translate(-50%, -50%); } 
-50% { transform: translate(-50%, -53%); } /* Very slight nudge */ } }
+}    
+@keyframes seal-bob { 0%, 100% { transform: translate(-50%, -50%); } 
+50% { transform: translate(-50%, -53%); } /* Very slight nudge */ } 
 @keyframes elegantPulse {
 0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.4; }
 50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
 }
-.hidden { display: none !important; }
-
-/* --- RSVP FORM STYLING --- */
-.rsvp-card {
-background: #fff;
-padding: 40px;
-max-width: 600px;
-margin: 0 auto;
-border: 1px solid var(--gold); /* Adds a classy gold border */
-box-shadow: 0 15px 45px rgba(4, 57, 39, 0.15);
-text-align: center; /* Centers the "Hi [Name]" */
-display: flex;
-flex-direction: column;
-
-/* THE FIX: Force all cards to be the exact same baseline height */
-min-height: 450px; 
-justify-content: center; /* This keeps the text perfectly centered inside */
-box-sizing: border-box; /* THIS KEEPS IT CENTERED */
-
-position: relative; 
-overflow: hidden; 
-padding-top: 80px; /* Pushes the text down slightly so the flower fits */
     
-}
-
-
-/* Elegant Header */
-.rsvp-card h2 {
-font-family: 'Great Vibes', cursive;
-color: var(--accent);
-font-size: 3rem;
-margin-bottom: 20px;
-}
-
-/* Labels */
-.rsvp-card label {
-font-family: 'Montserrat', sans-serif;
-font-size: 0.9rem;
-text-transform: uppercase;
-letter-spacing: 2px;
-color: var(--text);
-margin-bottom: 8px;
-text-align: left; /* Labels look better aligned left */
-width: 100%;
-display: block;
-}
-
-/* Inputs & Selects */
-.rsvp-card input, 
-.rsvp-card select, 
-.rsvp-card textarea {
-width: 100%;
-padding: 12px;
-margin-bottom: 20px;
-border: 1px solid #ddd;
-border-radius: 4px;
-font-family: 'Montserrat', sans-serif;
-font-size: 1rem;
-background: #fcfaf7; /* Slight off-white to match theme */
-color: var(--accent);
-box-sizing: border-box; /* Prevents padding from breaking width */
-}
-
-/* Focus State (When you click an input) */
-.rsvp-card input:focus, 
-.rsvp-card select:focus, 
-.rsvp-card textarea:focus {
-outline: none;
-border-color: var(--gold);
-background: white;
-}
-
-/* The Confirm Button */
-.rsvp-card button {
-background-color: var(--accent);
-color: white;
-font-family: 'Montserrat', sans-serif;
-text-transform: uppercase;
-letter-spacing: 2px;
-padding: 15px 30px;
-border: none;
-cursor: pointer;
-margin-top: 10px;
-transition: background 0.3s ease;
-}
-
-.rsvp-card button:hover {
-background-color: var(--gold);
-}
 
 /* --- THE GUEST LABEL (On top of the pocket) --- */
 #envelope-label {
