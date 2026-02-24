@@ -637,23 +637,42 @@ Valet Parking Available
 
 <section id="dress-code" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #043927; padding: 60px 20px;">
     
-    <div class="reveal-on-scroll" style="width: 100%; max-width: 650px; background: #ffffff; padding: 50px 20px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5); border-radius: 4px; text-align: center;">
+    <style>
+        .attire-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Strictly forces 1 row of 4 */
+            gap: 10px; /* Keeps them close together */
+            margin-bottom: 50px;
+        }
+        .attire-gallery div {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Anchors all images to the bottom so heights match perfectly */
+            height: 170px;
+        }
+        .attire-gallery img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        /* Only switches to 2 columns on actual cellphones so they aren't microscopic */
+        @media (max-width: 600px) {
+            .attire-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px 10px;
+            }
+        }
+    </style>
+
+    <div class="reveal-on-scroll" style="width: 100%; max-width: 700px; background: #ffffff; padding: 50px 20px; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5); border-radius: 4px; text-align: center;">
 
         <h2 style="font-family: 'Pinyon Script', cursive; font-size: clamp(45px, 7vw, 65px); color: #043927; margin: 0 0 35px 0; line-height: 1;">Dress Code</h2>
 
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 60px;">
-            <div style="width: 120px; height: 160px; display: flex; align-items: center; justify-content: center;">
-                <img src="ninong.png" alt="Ninong" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
-            <div style="width: 120px; height: 160px; display: flex; align-items: center; justify-content: center;">
-                <img src="ninang.png" alt="Ninang" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
-            <div style="width: 120px; height: 160px; display: flex; align-items: center; justify-content: center;">
-                <img src="g.png" alt="Groomsmen" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
-            <div style="width: 120px; height: 160px; display: flex; align-items: center; justify-content: center;">
-                <img src="b.png" alt="Bridesmaids" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
+        <div class="attire-gallery">
+            <div><img src="ninong.png" alt="Ninong"></div>
+            <div><img src="ninang.png" alt="Ninang"></div>
+            <div><img src="g.png" alt="Groomsmen"></div>
+            <div><img src="b.png" alt="Bridesmaids"></div>
         </div>
 
         <div style="margin-bottom: 50px;">
