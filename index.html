@@ -14,18 +14,21 @@
 .envelope-glow {
     position: absolute;
     top: 40%; left: 50%;
-    width: 100px; height: 100px;
-    background: radial-gradient(circle, #fff 0%, #fff9e6 50%, transparent 100%);
-    filter: blur(15px);
+    width: 150px; height: 150px;
+    /* A very soft, diffuse pure white */
+    background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 80%);
+    filter: blur(30px); /* Massive blur removes any harsh edges */
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
     z-index: 2; 
-    transition: transform 0.8s ease-out, opacity 0.5s ease;
+    
+    /* 1.5s makes it a slow, elegant wash instead of a flash */
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease;
 }
 
 .open .envelope-glow {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(15); /* Bursts to cover the envelope */
+    transform: translate(-50%, -50%) scale(12); 
 }
 @media screen and (max-width: 600px) {
     #envelope-label {
@@ -434,7 +437,10 @@ border-color: var(--gold);
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    transform: scale(1.1);
+    transform: scale(1.05); /* Less movement, more of a smooth fade */
+    
+    /* Matches the 1.5s light expansion for a perfect crossfade */
+    transition: opacity 1.5s ease, visibility 1.5s, transform 1.5s ease !important;
 }
 
 /* --- THE SLIDE ANIMATION --- */
