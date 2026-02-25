@@ -974,6 +974,7 @@ if (typeof observer !== 'undefined') revealElements.forEach(el => observer.obser
 
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('id');
+});
 
 
 
@@ -1036,11 +1037,6 @@ function showMainForm() {
     
     togglePlusOneFields(hasPlusOne);
 }
-
-
-loadEntourage();
-setInterval(updateCountdown, 1000); updateCountdown();
-});
 
 
 
