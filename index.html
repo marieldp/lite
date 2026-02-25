@@ -970,9 +970,7 @@ const audioEl = document.getElementById('bg-music'); if(audioEl) audioEl.load();
 const revealElements = document.querySelectorAll('.reveal-on-scroll');
 if (typeof observer !== 'undefined') revealElements.forEach(el => observer.observe(el));
 
-loadEntourage();
-setInterval(updateCountdown, 1000); updateCountdown();
-});
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('id');
