@@ -973,41 +973,54 @@ loadEntourage();
 function openInvitation() {
     const wrapper = document.getElementById('envelope-wrapper');
     const flap = document.querySelector('.flap-container');
-    const audio = document.getElementById('bg-music'); // Target your audio ID
-    const mBtn = document.getElementById('musicBtn'); // Target your button ID
+    const audio = document.getElementById('bg-music');
+    const mBtn = document.getElementById('musicBtn');
 
-    // 1. START THE MUSIC
-    // This works because the guest just clicked the seal (User Gesture)
+    // 1. ELEGANT AUDIO FADE-IN
     if (audio) {
-        audio.play().catch(e => console.log("Music waiting for interaction"));
+        audio.volume = 0; // Start at zero volume
+        audio.play().catch(e => console.log("Music blocked by browser"));
+        
+        // Gradually increase volume every 200ms
+        let fadeAudio = setInterval(() => {
+            if (audio.volume < 0.9) {
+                audio.volume += 0.1; 
+            } else {
+                audio.volume = 1;
+                clearInterval(fadeAudio); // Stop the loop when at full volume
+            }
+        }, 200);
+        
         if (mBtn) mBtn.classList.add('playing');
     }
 
-    // 2. Stop the flap bobbing
+    // 2. STOP ENVELOPE BOBBING
     if (flap) {
         flap.style.animation = 'none';
         void flap.offsetWidth; 
     }
     document.getElementById('seal').style.pointerEvents = "none";
 
-    // 3. Open the envelope
+    // 3. START THE OPENING ANIMATION
     wrapper.classList.add('open');
     
-    // 4. Transition to site
+    // 4. EXIT TRANSITION
     setTimeout(() => {
         wrapper.classList.add('wrapper-exit');
+        
+        // Unlock site scrolling
         document.body.classList.add('show-site');
         document.documentElement.classList.add('show-site'); 
         
         window.scrollTo(0, 0); 
         window.dispatchEvent(new Event('scroll'));
 
-        // 5. ACTIVATE THE SCROLL TRACKER
-        // This makes the button fade in after the guest scrolls down
-        setupMusicObserver(); 
+        // Start the Music Button Scroll Tracker
+        if (typeof setupMusicObserver === "function") {
+            setupMusicObserver(); 
+        }
     }, 310); 
 }
-
 
 
 
