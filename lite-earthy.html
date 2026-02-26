@@ -70,6 +70,7 @@
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 1s ease, transform 1s ease;
+    
 }
 
 /* This class will be added by JS once the names are finished */
@@ -1120,12 +1121,17 @@ setTimeout(() => {
         }, 800); // This 800ms wait ensures the envelope is invisible first!
     }
 
-    function revealSubText() {
-        setTimeout(() => {
-            const subElements = document.querySelectorAll('.hero-sub-text');
-            subElements.forEach(el => el.classList.add('show'));
-        }, 600); 
-    }
+function revealSubText() {
+    setTimeout(() => {
+        const subElements = document.querySelectorAll('.hero-sub-text');
+        subElements.forEach((el, i) => {
+            // This creates a staggered delay: 0s, 0.3s, 0.6s
+            setTimeout(() => {
+                el.classList.add('show');
+            }, i * 300); 
+        });
+    }, 600); 
+}
 
     // Unlock site scrolling
     document.body.classList.add('show-site');
