@@ -202,6 +202,9 @@ font-size: 42px !important;
 html {
     overflow-x: hidden;
     scrollbar-gutter: stable; 
+
+    overflow: hidden !important; 
+    height: 100vh !important;
 }
 
 body { 
@@ -210,6 +213,9 @@ body {
     font-family: 'Montserrat', sans-serif; 
     color: var(--text); 
     overflow-x: hidden;
+
+    overflow: hidden !important; 
+    height: 100vh !important;
 }
 
 /* 2. OPEN STATE: Unlocked for the Website */
@@ -218,6 +224,7 @@ body.show-site, html.show-site {
     overflow-x: hidden !important; 
     height: auto !important;
     min-height: 100vh;
+    overflow-y: auto !important; 
 }
 
 #main-site {
