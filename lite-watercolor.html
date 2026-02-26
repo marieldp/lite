@@ -26,7 +26,66 @@
     --basictext: #000000;
 }
 }
+/* --- AUTOMATIC SLIDING CAROUSEL --- */
+.bg-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden; /* Important: keeps slides from showing outside the box */
+}
 
+.bg-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    
+    /* Start everything off-screen to the right */
+    transform: translateX(100%); 
+    
+    /* 12 seconds total loop (4s per image) */
+    animation: physicalSlide 12s infinite linear;
+}
+
+.bg-slideshow .slide-1 {
+    background-image: url('1.jpg');
+    animation-delay: 0s;
+}
+.bg-slideshow .slide-2 {
+    background-image: url('1.jpg');
+    animation-delay: 4s;
+}
+.bg-slideshow .slide-3 {
+    background-image: url('1.jpg');
+    animation-delay: 8s;
+}
+.bg-slideshow .slide-4 {
+    background-image: url('1.jpg');
+    animation-delay: 8s;
+}
+
+/* THE MATH:
+   0% - 5%: Slides in from right to center
+   5% - 33%: Stays perfectly still (about 3.5 seconds)
+   33% - 38%: Slides out to the left
+   38% - 100%: Stays off-screen
+*/
+@keyframes physicalSlide {
+    0% { transform: translateX(100%); }
+    5% { transform: translateX(0%); }
+    33.33% { transform: translateX(0%); }
+    38.33% { transform: translateX(-100%); }
+    100% { transform: translateX(-100%); }
+}
 /* =========================================
  TEXT ANIMATION STYLES
  ========================================= */
@@ -617,7 +676,15 @@ to { opacity: 1; }
 
 <div id="main-site">
 
+
+
 <section id="landing-hero" style="position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5svh;">
+<div class="bg-slideshow">
+        <div class="slide slide-1"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+        <div class="slide slide-4"></div>
+</div>
 <div class="hero-content" style="position: relative; text-align: center; z-index: 2; max-width: 90vw;">
 <h1 style="font-family: 'Great Vibes', cursive; font-size: clamp(50px, 8vw, 100px); color: var(--landing-hero); margin: 0; line-height: 1.2;">
     <div id="hero-names" class="typewriter-reveal" style="max-width: fit-content; margin: 0 auto;">
