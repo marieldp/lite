@@ -1092,36 +1092,38 @@ setTimeout(() => {
     const heroNames = document.getElementById('hero-names');
     if (heroNames) {
         const text = heroNames.innerText;
-        const characters = [...text]; // Break text into an array
+        const characters = [...text];
         heroNames.innerHTML = ''; 
-        heroNames.style.opacity = "1"; 
+        
+        // --- THE FIX: WAIT FOR ENVELOPE TO FULLY VANISH ---
+        setTimeout(() => {
+            heroNames.style.opacity = "1"; 
 
-        characters.forEach((char, i) => {
-            const span = document.createElement('span');
-            span.textContent = char;
-            span.style.opacity = '0';
-            span.style.display = 'inline-block';
-            heroNames.appendChild(span);
+            characters.forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.opacity = '0';
+                span.style.display = 'inline-block';
+                heroNames.appendChild(span);
 
-            // Typing each letter
-            setTimeout(() => {
-                span.style.opacity = '1';
-                span.style.transition = 'opacity 0.1s ease';
+                // --- THE SPEED FIX: Changed to 150ms for a slower, romantic pace ---
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                    span.style.transition = 'opacity 0.2s ease';
 
-                // CHECK: Is this the very last letter?
-                if (i === characters.length - 1) {
-                    revealSubText(); // Call the function to show the date
-                }
-            }, i * 80); // 80ms for a slightly snappier feel
-        });
+                    if (i === characters.length - 1) {
+                        revealSubText(); 
+                    }
+                }, i * 150); 
+            });
+        }, 800); // This 800ms wait ensures the envelope is invisible first!
     }
 
-    // Function to reveal the date/line after names are done
     function revealSubText() {
         setTimeout(() => {
             const subElements = document.querySelectorAll('.hero-sub-text');
             subElements.forEach(el => el.classList.add('show'));
-        }, 500); // Wait 0.5s after typing ends before fading in the rest
+        }, 600); 
     }
 
     // Unlock site scrolling
