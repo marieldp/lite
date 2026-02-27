@@ -26,56 +26,7 @@
     --basictext: #000000;
 }
 }
-/* --- FLAWLESS SLIDING CAROUSEL --- */
-.bg-slideshow {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0; overflow: hidden;
-}
 
-.bg-slideshow .slide {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover; background-position: center top;
-    background-repeat: no-repeat;
-    /* Default state: hidden safely off-screen to the right */
-    transform: translateX(100%); 
-}
-
-/* Slide 1 overrides the default so it is visible the second the page loads */
-.bg-slideshow .slide-1 { 
-    background-image: url('1.jpg'); 
-    transform: translateX(0%); 
-}
-.bg-slideshow .slide-2 { background-image: url('1.jpg'); }
-.bg-slideshow .slide-3 { background-image: url('1.jpg'); }
-.bg-slideshow .slide-4 { background-image: url('1.jpg'); }
-
-
-/* The animation ONLY attaches when the JS adds this class */
-.start-slideshow .slide {
-    animation: luxurySlide 12s infinite cubic-bezier(0.45, 0, 0.15, 1);
-    /* This forces the slides to wait their turn properly */
-    animation-fill-mode: backwards; 
-}
-
-/* THE MATH: 1 second of sliding, 3 seconds of resting.
-   - Slide 1 uses a negative delay to "skip" its entrance and start perfectly in the center.
-   - Slide 2 slides in exactly as Slide 1 slides out.
-*/
-.start-slideshow .slide-1 { animation-delay: -1s; }
-.start-slideshow .slide-2 { animation-delay: 7s; }
-.start-slideshow .slide-3 { animation-delay: 7s; }
-.start-slideshow .slide-4 { animation-delay: 7s; }
-
-
-@keyframes luxurySlide {
-    0% { transform: translateX(100%); }
-    8.33% { transform: translateX(0%); }       /* Takes 1s to slide in */
-    33.33% { transform: translateX(0%); }      /* Stays still for 3s */
-    41.66% { transform: translateX(-100%); }   /* Takes 1s to slide out */
-    100% { transform: translateX(-100%); }     /* Stays off-screen */
-}
 /* =========================================
  TEXT ANIMATION STYLES
  ========================================= */
@@ -669,12 +620,6 @@ to { opacity: 1; }
 
 
 <section id="landing-hero" style="position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5svh;">
-<div class="bg-slideshow">
-        <div class="slide slide-1"></div>
-        <div class="slide slide-2"></div>
-        <div class="slide slide-3"></div>
-        <div class="slide slide-4"></div>
-</div>
 <div class="hero-content" style="position: relative; text-align: center; z-index: 2; max-width: 90vw;">
 <h1 style="font-family: 'Great Vibes', cursive; font-size: clamp(50px, 8vw, 100px); color: var(--landing-hero); margin: 0; line-height: 1.2;">
     <div id="hero-names" class="typewriter-reveal" style="max-width: fit-content; margin: 0 auto;">
